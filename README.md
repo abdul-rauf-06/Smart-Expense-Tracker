@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Smart Expense Tracker
 
@@ -73,3 +74,6 @@ localStorage.setItem("expenses", JSON.stringify(expenses));
 * Cloud database support
 * Multi-user system
 
+=======
+# Smart-Expense-Tracker
+>>>>>>> 5f452bc4fac89e0bceacffb61d80bd1ac7f92f1c
