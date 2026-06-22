@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Smart Expense Tracker</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =====================
+        SIDEBAR
+    ====================== -->
+    <aside class="sidebar">
+
+        <div class="profile">
+            <div class="avatar">👤</div>
+            <h2 id="username">User Name</h2>
+            <p>Active User</p>
+        </div>
+
+        <nav>
+            <a onclick="showAll()">📊 Dashboard</a>
+
+            <a onclick="showSection('expenseSection')">➕ Add Expense</a>
+
+            <a onclick="showSection('historySection')">📁 History</a>
+
+            <a onclick="showSection('reportSection')">📈 Reports</a>
+
+            <a href="login.html" onclick="logout()" class="logout">
+                🚪 Logout
+            </a>
+        </nav>
+
+    </aside>
+
+    <!-- =====================
+        MAIN
+    ====================== -->
+    <main class="main">
+
+        <header class="topbar">
+            <h1 id="pageTitle">Dashboard Overview</h1>
+        </header>
+
+        <!-- =====================
+            OVERVIEW
+        ====================== -->
+        <section id="overview" class="section">
+
+            <div class="cards">
+
+                <div class="card income">
+                    <h3>Total Income</h3>
+                    <p>Rs <span id="income">0</span></p>
+                </div>
+
+                <div class="card expense">
+                    <h3>Total Expense</h3>
+                    <p>Rs <span id="expense">0</span></p>
+                </div>
+
+                <div class="card balance">
+                    <h3>Balance</h3>
+                    <p>Rs <span id="balance">0</span></p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================
+            ADD EXPENSE
+        ====================== -->
+        <section id="expenseSection" class="section">
+
+            <div class="box">
+                <h2>Add Expense</h2>
+
+                <form id="expenseForm">
+
+                    <div class="grid">
+
+                        <input type="text" id="title" placeholder="Expense Title" required />
+
+                        <input type="number" id="amount" placeholder="Amount" required />
+
+                        <select id="category">
+                            <option>Food</option>
+                            <option>Travel</option>
+                            <option>Bills</option>
+                            <option>Shopping</option>
+                            <option>Other</option>
+                        </select>
+
+                        <input type="date" id="date" required />
+
+                    </div>
+
+                    <button type="submit" class="main-btn">
+                        Add Expense
+                    </button>
+
+                </form>
+            </div>
+
+            <!-- UPDATE INCOME -->
+            <div class="box">
+                <h2>Update Income</h2>
+
+                <div class="inline">
+                    <input type="number" id="newIncome" placeholder="Enter Monthly Income" />
+
+                    <button type="button" onclick="updateIncome()">
+                             Update
+                    </button>
+                </div>
+            </div>
+
+            <!-- SET LIMIT -->
+            <div class="box">
+                <h2>Set Expense Limit</h2>
+
+                <div class="inline">
+                    <input type="number" id="budgetLimit" placeholder="Enter Expense Limit" />
+
+                   <button type="button" class="limit-btn" onclick="setLimit()">
+       Set Limit
+
+              </button>
+                            
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =====================
+            HISTORY
+        ====================== -->
+        <section id="historySection" class="section">
+
+            <div class="box">
+
+                <div class="table-top">
+                    <h2>Expense History</h2>
+
+                    <input
+                        id="searchInput"
+                        placeholder="Search Expense"
+                        onkeyup="searchTable()"
+                    />
+                </div>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="expenseTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- =====================
+            REPORT
+        ====================== -->
+        <section id="reportSection" class="section hidden">
+
+            <div class="box">
+                <h2>Monthly Report</h2>
+
+                <h1>
+                    Rs <span id="reportTotal">0</span>
+                </h1>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- =====================
+    LIMIT ALERT
+====================== -->
+<div id="limitAlert" class="limit-alert">
+    ⚠️ Your Expense Limit Exceeded
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

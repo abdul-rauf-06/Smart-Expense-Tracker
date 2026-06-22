@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sign Up | Smart Expense Tracker</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="auth-body">
+
+<div class="auth-container">
+
+    <!-- LEFT -->
+    <div class="auth-left">
+        <h1>Create Your Account</h1>
+        <p>
+            Start managing your expenses and track your financial goals.
+        </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="auth-right">
+
+        <div class="auth-box">
+
+            <h2>Sign Up</h2>
+            <p class="subtitle">Create account to continue</p>
+
+            <form id="signupForm">
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Full Name"
+                    required
+                />
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    required
+                />
+
+                <!-- PASSWORD -->
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required
+                    />
+
+                    <span class="toggle" onclick="togglePassword('password')">
+                        👁️
+                    </span>
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm Password"
+                        required
+                    />
+
+                    <span class="toggle" onclick="togglePassword('confirmPassword')">
+                        👁️
+                    </span>
+                </div>
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+            </form>
+
+            <p class="bottom-text">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function togglePassword(id) {
+        const field = document.getElementById(id);
+        field.type = field.type === "password" ? "text" : "password";
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirm = document.getElementById("confirmPassword").value;
+
+        if (password !== confirm) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        const user = {
+            name,
+            email,
+            password
+        };
+
+        localStorage.setItem("user", JSON.stringify(user));
+
+        alert("Account Created Successfully");
+
+        window.location = "login.html";
+    });
+</script>
+
+</body>
+</html>
